@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -43,11 +44,16 @@ public class FoldersRecyclerAdapter extends RecyclerView.Adapter<FoldersRecycler
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView folderName;
+        public RelativeLayout viewBackground, viewForeground;
 
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
         folderName = itemView.findViewById(R.id.folderTextView);
+        viewBackground = itemView.findViewById(R.id.view_background);
+        viewForeground = itemView.findViewById(R.id.text_container);
     }
 }
+
+
 
 }

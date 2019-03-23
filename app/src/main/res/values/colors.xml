@@ -23,4 +23,6 @@
 
     <!-- Background color for the phrases category -->
     <color name="category_phrases">#16AFCA</color>
+
+    <color name="background">#ff0000</color>
 </resources>

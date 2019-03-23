@@ -5,15 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.smartcardsnew.Adapters.FoldersRecyclerAdapter;
+import com.example.smartcardsnew.Helper.RecyclerItemTouchHelper;
+import com.example.smartcardsnew.Helper.RecyclerItemTouchHelperListener;
 import com.example.smartcardsnew.Models.Folders;
 
 import java.util.ArrayList;
 
-public class MyCardsActivity extends AppCompatActivity {
+public class MyCardsActivity extends AppCompatActivity implements RecyclerItemTouchHelperListener {
     private static final String TAG = "NotesListActivity";
    private RecyclerView mRecyclerView;
 
@@ -26,7 +29,8 @@ public class MyCardsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cards);
         mRecyclerView = findViewById(R.id.folder_RecyclerView);
-
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallBack = new RecyclerItemTouchHelper(0,ItemTouchHelper.LEFT, this);
+        new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(mRecyclerView);
         //adding new Folder
         addButton = findViewById(R.id.fab);
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +45,7 @@ public class MyCardsActivity extends AppCompatActivity {
     }
 
 
-    private void addFolder(){
+    public void addFolder(){
         Folders newFolder = new Folders();
         newFolder.setFolderName("New Folder");
         mFolders.add(newFolder);
@@ -50,7 +54,7 @@ public class MyCardsActivity extends AppCompatActivity {
         mFoldersRecyclerAdapter.notifyDataSetChanged();
     }
 
-    private void deleteFolder(int position){
+    public void deleteFolder(int position){
         mFolders.remove(position);
         mFoldersRecyclerAdapter.notifyDataSetChanged();
     }
@@ -61,4 +65,14 @@ private void initRecyclerView(){
     mFoldersRecyclerAdapter = new FoldersRecyclerAdapter(mFolders);
     mRecyclerView.setAdapter(mFoldersRecyclerAdapter);
 }
+
+    @Override
+    public void onSwiper(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+    if (viewHolder instanceof FoldersRecyclerAdapter.ViewHolder){
+        String name = mFolders.get(viewHolder.getAdapterPosition()).getFolderName();
+        Folders deletedFolder = mFolders.get(viewHolder.getAdapterPosition());
+        int deleteIndex = viewHolder.getAdapterPosition();
+        deleteFolder(deleteIndex);
+    }
+    }
 }
