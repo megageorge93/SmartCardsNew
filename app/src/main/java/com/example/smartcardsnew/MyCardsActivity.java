@@ -45,6 +45,13 @@ public class MyCardsActivity extends AppCompatActivity {
         Folders newFolder = new Folders();
         newFolder.setFolderName("New Folder");
         mFolders.add(newFolder);
+        //scrolls to the last item after adding
+        mRecyclerView.smoothScrollToPosition(mFolders.size());
+        mFoldersRecyclerAdapter.notifyDataSetChanged();
+    }
+
+    private void deleteFolder(int position){
+        mFolders.remove(position);
         mFoldersRecyclerAdapter.notifyDataSetChanged();
     }
 private void initRecyclerView(){
