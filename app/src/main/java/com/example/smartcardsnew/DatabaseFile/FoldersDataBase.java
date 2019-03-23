@@ -26,7 +26,7 @@ public abstract class FoldersDataBase extends RoomDatabase {
         return INSTANCE;
     }
 
-//rofl
+//rofl ON GEORGE
 
     //optimize memory usage(keeps away from having lots of same objects in Database
    // static FoldersDataBase getInstance(final Context context){
