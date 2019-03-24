@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tan_background"
+    tools:context=".EditCardActivity"
+    android:orientation="vertical"
+    android:layout_weight="100">
+
+    <LinearLayout
+        android:id="@+id/front_layout"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_weight="45"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <EditText
+            android:id="@+id/edit_front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter the info on the front of the card"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/saveCard_button"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Save"
+        android:textColor="@color/tan_background"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="350dp"
+        android:background="@color/colorPrimary"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/back_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="30dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/front_layout"
+        tools:layout_editor_absoluteX="49dp">
+
+        <EditText
+            android:id="@+id/edit_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter the info on the back of the card"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>

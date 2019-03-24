@@ -1,5 +1,6 @@
 package com.example.smartcardsnew;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import com.example.smartcardsnew.Models.Folders;
 import java.util.ArrayList;
 
 public class MyCardsActivity extends AppCompatActivity implements RecyclerItemTouchHelperListener {
-    private static final String TAG = "NotesListActivity";
+   //Need to Add functionality of Edit Mode and View Mode. When add Buton is pressed or on long click - Edit Mode
    private RecyclerView mRecyclerView;
 
    private ArrayList<Folders> mFolders = new ArrayList<>();
@@ -28,6 +29,7 @@ public class MyCardsActivity extends AppCompatActivity implements RecyclerItemTo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cards);
+
         mRecyclerView = findViewById(R.id.folder_RecyclerView);
         ItemTouchHelper.SimpleCallback itemTouchHelperCallBack = new RecyclerItemTouchHelper(0,ItemTouchHelper.LEFT, this);
         new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(mRecyclerView);
@@ -64,6 +66,15 @@ private void initRecyclerView(){
     //mRecyclerView = (RecyclerView) findViewById(R.id.folder_RecyclerView);
     mFoldersRecyclerAdapter = new FoldersRecyclerAdapter(mFolders);
     mRecyclerView.setAdapter(mFoldersRecyclerAdapter);
+    mFoldersRecyclerAdapter.setOnItemClickListener(new FoldersRecyclerAdapter.OnItemClickListener() {
+        @Override
+        public void onItemClick(int position) {
+            mFolders.get(position);
+            Intent folderListIntent = new Intent(MyCardsActivity.this, CardListActivity.class);
+            startActivity(folderListIntent);
+            mFoldersRecyclerAdapter.notifyDataSetChanged();
+        }
+    });
 }
 
     @Override

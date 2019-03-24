@@ -18,8 +18,15 @@ import java.util.ArrayList;
 
 public class FoldersRecyclerAdapter extends RecyclerView.Adapter<FoldersRecyclerAdapter.ViewHolder> {
    private ArrayList<Folders> mFolders = new ArrayList<>();
+   private OnItemClickListener mListener;
 
+   public interface OnItemClickListener{
+       void onItemClick(int position);
+   }
 
+   public void setOnItemClickListener (OnItemClickListener listener){
+       mListener = listener;
+   }
 
     public FoldersRecyclerAdapter(ArrayList<Folders> mFolders) {
         this.mFolders = mFolders;
@@ -51,6 +58,17 @@ public class FoldersRecyclerAdapter extends RecyclerView.Adapter<FoldersRecycler
         folderName = itemView.findViewById(R.id.folderTextView);
         viewBackground = itemView.findViewById(R.id.view_background);
         viewForeground = itemView.findViewById(R.id.text_container);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener != null){
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION){
+                        mListener.onItemClick(position);
+                    }
+                }
+            }
+        });
     }
 }
 

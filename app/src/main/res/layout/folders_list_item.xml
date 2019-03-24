@@ -55,6 +55,7 @@
         android:layout_toLeftOf="@+id/deleteIcon"
         android:text="Delete"
         android:textColor="@android:color/white"
+        android:textStyle="bold"
         android:textSize="13sp"/>
 
 
