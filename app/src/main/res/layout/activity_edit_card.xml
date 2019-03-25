@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,13 +31,13 @@
         android:id="@+id/saveCard_button"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:background="@color/colorPrimary"
         android:text="Save"
         android:textColor="@color/tan_background"
         android:textStyle="bold"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="350dp"
-        android:background="@color/colorPrimary"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="350dp" />
 
     <LinearLayout
         android:id="@+id/back_layout"
@@ -61,4 +61,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
