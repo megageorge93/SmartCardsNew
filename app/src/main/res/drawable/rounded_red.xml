@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:xmins="http://schemas.android.com/apk/res/android"
+    xmins:shape="rectangle">
+    <solid xmins:color="@color/background"/>
+    <corners xmins:radius="50dp"/>
+</shape>
